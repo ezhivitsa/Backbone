@@ -1,22 +1,17 @@
 define([
+	'app',
+	'dataSource',
+
 	'backbone',
 	'underscore',
 	'jquery'
 ],
-	function (Backbone, _, $) {
+	function (App, DataSource, Backbone, _, $) {
 		return Backbone.View.extend({
-			templateUrl: 'templates/form.html',
+			templateUrl: 'form',
 
 			initialize: function () {
-				var self = this;
-
-				$.ajax({
-					url: this.templateUrl,
-					method: 'GET',
-					async: false
-				}).done(function (template) {
-					self.template = _.template(template);
-				});
+				this.template = _.template(DataSource.getTemplate(this.templateUrl));
 			},
 
 			events: {
@@ -30,9 +25,15 @@ define([
 			},
 
 			submitClick: function (e) {
+				var $firstName = this.$el.find('#first-name'),
+					$lastName = this.$el.find('#last-name');
+
 				e.preventDefault();
 
-				console.log('sss')
+					// debugger
+				if ( $firstName.val() === App.author.firstName && $lastName.val() === App.author.lastName ) {
+					DataSource.trigger(':modal-question-show');
+				}
 			}
 		});
 	}

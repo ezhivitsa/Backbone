@@ -1,13 +1,16 @@
 require([
 	'jquery',
 
-	'modules/form'
+	'modules/form',
+	'modules/question'
 ], 
-	function ($, Form) {
+	function ($, FormView, QuestionView) {
 		var $root = $('#app-root');
 
-		var form = new Form();
+		var form = new FormView(),
+			question = new QuestionView();
 
 		form.render($root);
+		question.render($root);
 	}
 );
