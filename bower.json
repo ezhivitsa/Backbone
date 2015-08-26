@@ -1,0 +1,10 @@
+{
+	"name": "backbone-1",
+	"devDependencies": {
+		"requirejs": "latest",
+		"backbone-amd": "latest",
+		"underscore-amd": "latest",
+		"bootstrap": "latest",
+		"jquery": "latest"
+	}
+}

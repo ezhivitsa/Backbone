@@ -1,0 +1,10 @@
+{
+	"name": "backbone-1",
+	"version": "0.0.1",
+	"dependencies": {
+		"grunt": "latest",
+		"grunt-contrib-watch": "latest",
+		"grunt-contrib-requirejs": "latest",
+		"grunt-contrib-connect": "latest"
+	}
+}
