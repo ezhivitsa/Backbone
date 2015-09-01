@@ -3,15 +3,19 @@ define([
 	'dataSource',
 
 	'backbone',
-	'underscore'
+	'underscore',
+	'jquery',
+	'bootstrap'
 ], 
-	function (App, DataSource, Backbone, _) {
+	function (App, DataSource, Backbone, _, $) {
 		return Backbone.View.extend({
 			template: _.template(DataSource.getTemplate('modal-popup')),
 
 			initialize: function () {
+				var self = this;
+
 				DataSource.on(':modal-question-show', function () {
-					console.log('hjghjbgh');
+					self.$el.find('#modal-question').modal('show');
 				});	
 			},
 

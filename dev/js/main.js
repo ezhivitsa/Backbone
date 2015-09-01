@@ -17,13 +17,13 @@ require([
 
 		var form = new FormView(),
 			question = new QuestionView(),
-			toDoList = new ToDoListView(),
+			toDoList = new ToDoListView(actionsCollection),
 			actions = new ActionsView({ collection: actionsCollection });
 
 
 		form.render($root);
 		question.render($root);
-		toDoList.render($root);
+		$root.append(toDoList.render().el);
 
 		$root.append(actions.render().el);
 	}

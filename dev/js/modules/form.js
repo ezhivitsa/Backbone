@@ -3,10 +3,9 @@ define([
 	'dataSource',
 
 	'backbone',
-	'underscore',
-	'jquery'
+	'underscore'
 ],
-	function (App, DataSource, Backbone, _, $) {
+	function (App, DataSource, Backbone, _) {
 		return Backbone.View.extend({
 			templateUrl: 'form',
 

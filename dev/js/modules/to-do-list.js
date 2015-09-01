@@ -6,36 +6,37 @@ define([
 
 	'modules/models/action'
 ],
-	function (Backbone, _, DataSource) {
+	function (Backbone, _, DataSource, ActionModel) {
 		'use strict';
 
-		var ActionView = Backbone.View.extend({
+		return Backbone.View.extend({
 			template: _.template(DataSource.getTemplate('to-do-list')),
 
 			events: {
-				'.btn click': 'buttonClick'
+				'.btn click': 'addToList'
+			},
+
+			initialize: function (ActionsCollection) {
+				this.actionsCollection = ActionsCollection;
 			},
 
 			render: function () {
-				this.$el.append(this.template(this.model.toJSON()));
+				this.$el.append(this.template());
 				return this;
 			},
 
-			buttonClick: function () {
-				var action = this.$el.find('.action').val();
-			}
-		});
+			addToList: function () {
+				var actionText = this.$el.val(),
+					action;
 
-		return Backbone.View.extend({
-			'tagName': 'ul',
+				if ( action ) {
+					action = new ActionModel({
+						action: actionText,
+						isDone: false
+					});
 
-			render: function () {
-				this.collection.each(function(action){
-					var actionView = new ActionView({ model: action });
-					this.$el.append(actionView.render().el);
-				}, this);
-
-				return this;
+					actionsCollection.add(action);
+				}
 			}
 		});
 	}
