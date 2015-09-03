@@ -13,7 +13,7 @@ define([
 			template: _.template(DataSource.getTemplate('to-do-list')),
 
 			events: {
-				'.btn click': 'addToList'
+				'click .btn': 'addToList'
 			},
 
 			initialize: function (ActionsCollection) {
@@ -26,16 +26,17 @@ define([
 			},
 
 			addToList: function () {
-				var actionText = this.$el.val(),
+				var actionText = this.$el.find('.action').val(),
 					action;
 
-				if ( action ) {
+				if ( actionText ) {
 					action = new ActionModel({
 						action: actionText,
 						isDone: false
 					});
 
-					actionsCollection.add(action);
+					this.actionsCollection.add(action);
+					console.log(this.actionsCollection)
 				}
 			}
 		});

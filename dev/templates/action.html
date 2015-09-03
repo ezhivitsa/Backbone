@@ -8,9 +8,9 @@
 		</del>
 		<% } %>
 	</p>
-	<% if (isDone) { %>
+	<% if (!isDone) { %>
 	<button class="btn btn-danger remove">Remove</button>
-	<button class="btn btn-success dove">Done</button>
+	<button class="btn btn-success done">Mark as Done</button>
 	<%  } else { %>
 	<button class="btn btn-primary make-active">Make active</button>
 	<% } %>
