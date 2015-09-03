@@ -21,7 +21,7 @@ define([
 			},
 
 			render: function () {
-				this.$el.append(this.template());
+				this.$el.html(this.template());
 				return this;
 			},
 
@@ -36,7 +36,6 @@ define([
 					});
 
 					this.actionsCollection.add(action);
-					console.log(this.actionsCollection)
 				}
 			}
 		});

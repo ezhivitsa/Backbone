@@ -21,8 +21,7 @@ define([
 
 			render: function ($parent) {
 				this.$el.html(this.template());
-
-				$parent.append(this.$el);
+				return this;
 			}
 		});
 	}

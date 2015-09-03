@@ -1,30 +1,21 @@
 require([
 	'jquery',
+	'backbone',
 
-	'modules/form',
-	'modules/question',
-	'modules/to-do-list',
-	'modules/actions',
+	'modules/menu',
 
-	'modules/collections/action'
+	'router'
 ], 
-	function ($, FormView, QuestionView, ToDoListView, ActionsView, ActionsCollection) {
+	function ($, Backbone, MenuView, Router) {
 		'use strict';
 
-		var $root = $('#app-root');
+		var $menu = $('#menu');
 
-		var actionsCollection = new ActionsCollection();
+		var menu = new MenuView(),
+			router = new Router();
 
-		var form = new FormView(),
-			question = new QuestionView(),
-			toDoList = new ToDoListView(actionsCollection),
-			actions = new ActionsView({ collection: actionsCollection });
+		$menu.append(menu.render().el);
 
-
-		form.render($root);
-		question.render($root);
-		$root.append(toDoList.render().el);
-
-		$root.append(actions.render().el);
+		Backbone.history.start();
 	}
 );

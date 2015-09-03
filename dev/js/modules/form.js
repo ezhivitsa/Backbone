@@ -17,10 +17,9 @@ define([
 				'click [type="submit"]': 'submitClick'
 			},
 
-			render: function ($parent) {
+			render: function () {
 				this.$el.html(this.template());
-
-				$parent.append(this.$el);
+				return this;
 			},
 
 			submitClick: function (e) {
@@ -29,7 +28,6 @@ define([
 
 				e.preventDefault();
 
-					// debugger
 				if ( $firstName.val() === App.author.firstName && $lastName.val() === App.author.lastName ) {
 					DataSource.trigger(':modal-question-show');
 				}
